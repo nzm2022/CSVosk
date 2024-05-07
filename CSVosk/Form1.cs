@@ -18,7 +18,7 @@ namespace CSVosk
         private void InitializeVosk()
         {
             Vosk.SetLogLevel(0); // Set log level to warning only
-            Model model = new Model(".\\models\\jp-ja");
+            Model model = new Model(".\\models\\vosk-model-ja-0.22");
             //Model model = new Model(".\\models\\vosk-model-small-ja-0.22");
             recognizer = new VoskRecognizer(model, 16000);
         }
@@ -60,7 +60,7 @@ namespace CSVosk
             Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(text);
             try
             {
-                string valueText = values["text"].Replace(" ","");
+                string valueText = values["text"]; //.Replace(" ","");
                 if (valueText != "")
                 {
 
@@ -98,7 +98,7 @@ namespace CSVosk
 
             try
             {
-                string valueText = values["partial"].Replace(" ","");
+                string valueText = values["partial"];//.Replace(" ","");
                 if (valueText != "")
                 {
                     if (this.InvokeRequired)
